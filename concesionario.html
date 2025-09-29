@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Luxury Garage - BMW Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+header{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: white;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            min-height: 2004px;
+            background-color: #000000;
+        }
+
+        /* Header con imagen BMW i8 */
+        .header-with-image {
+            position: absolute;
+            top: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1442px;
+            height: 720px;
+            background-image: url(./bmw.jpg);
+            background-size: cover;
+            background-position: 50% 50%;
+            border-radius: 8px;
+            box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+            overflow: hidden;
+        }
+
+        .dimmer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.24);
+        }
+
+        .page-title {
+            position: absolute;
+            top: 284px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 844px;
+            text-align: center;
+        }
+
+        .main-title {
+            font-size: 64px;
+            font-weight: 700;
+            letter-spacing: -1.28px;
+            line-height: 1.4;
+            margin-bottom: 16px;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        /* Navegación superior */
+        .navigation {
+            position: absolute;
+            top: 45px;
+            left: 0;
+            right: 0;
+            height: 164px;
+        }
+
+        .nav-items {
+            position: absolute;
+            right: 80px;
+            top: 56px;
+            display: flex;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-size: 20px;
+            font-weight: 500;
+            color: white;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .nav-button {
+            padding: 14px 24px;
+            border: 2px solid white;
+            border-radius: 8px;
+            background: transparent;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background-color: white;
+            color: black;
+        }
+
+        .logo {
+            position: absolute;
+            left: 80px;
+            top: 82px;
+            transform: translateY(-50%);
+            font-size: 20px;
+            font-weight: 500;
+            color: white;
+        }
+
+        /* Galería de imágenes */
+        .gallery-image {
+            position: absolute;
+            height: 243px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.25);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            background-color: black;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .gallery-image:hover {
+            filter: brightness(0.75);
+            transform: scale(1.05);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0);
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .gallery-image:hover .image-overlay {
+            background-color: rgba(0,0,0,0.3);
+        }
+
+        .image-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-image:hover .image-content {
+            opacity: 1;
+        }
+
+        .image-text {
+            text-align: center;
+            color: white;
+            padding: 16px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Posiciones de las imágenes */
+        .image-1 {
+            left: 4.37%;
+            right: 72.82%;
+            top: 878px;
+            background-image: url('https://prod.cosy.bmw.cloud/bmwweb/cosySec?COSY-EU-100-7331c9Nv2Z7d5yKlHS9amvhz25GaRhj5sgXAOHCrmg0VoWNekx%25AkbH8cLV04MOhFUbmKTagd14fXw1j6UmmlDWLfV91KVZ0pEuTQLTKs8VNP05PuDiDbH84lNHCHvHfX0Kc%252%25xv4WxfjvCacP81D2WAxbUEqjp289GsLD6uUiprJqYhGw6ZuAcmptYRSFxO67m5VK7JYCygNWOomlTv0PjdyX324bDfTQdjcyF23azDxT0Qdnkq83mCzOALUdy%25kIFJGzTOABKupkiZFeWS6AyEKMPVYFTHWhbNmK1CPo90yWnxbHi4TPG29%25wc3bpmiftxd9Uww178ziGntECUkwQ37slGAtakCrXpF7sGlZQ6KdbnXRaYWz2RQ5nmPklcagOybMxrnvIT9hLCO2B3iohzIjedwHNxBDMzt%25r0eqhk7fZDMLoAC0wvhJHFl4toou%25KXcjjHSfWQxy0%25V1Pa89kfNEbnUIj10tTkh6ekxmOYQXRTne0IqQmSOP%25SUagd5HBeMnTN7YZM13ALV91KM4P1YeyWNRsj6X3aJt6C3NrvXYukWptvmQxDOPLNrA90qIeM');
+        }
+
+        .image-3 {
+            left: 71.64%;
+            right: 5.55%;
+            top: 878px;
+            background-image: url("Proyecto\ Quitar\ fondo.png");
+            background-size: 240px 180px; /*la achiqué*/
+            background-position: center 60px; /*la moví mas abajo*/
+        }
+
+        .image-2 {
+            left: 38.56%;
+            right: 38.63%;
+            top: 878px;
+            background-image: url('https://prod.cosy.bmw.cloud/bmwweb/cosySec?COSY-EU-100-7331c9Nv2Z7d5yKlHS9amvhz25GaRhj5sgXAOHCrmg0VoWNekx%25AkbH8cLV04MOhFU6mcWagd14fXw1j6UmmlDWLfV91KVZ0pEuTQLTKs8VNP05PRBPZbH84lNHCY4sNpqIzL5aUqTJIsIKpL3uBrEPwJdSeZs3muzVMRrdsSkNh5Z4rVA0ogRcXNF4Hv5xp0Kc%252yG84WxfjTSUcP81D3sSxbUEqcNP89GsLx0bUiprJ8iKGw6ZuUweptYRSG0167m5VpFtYCygN6M9mlTv0YhUyX324moMTQdjcyH73azDxTLDdnkq83JqzOALUdtzkIFJG4IQABKupcmPFeWS6xHSKMPVY8%25XWhbNmUFgPo90yGK0bHi4TpWj9%25wc36PBiftxdXyMw178zQFotECUkaB17slGAnV%25CrXpFOtClZQ6KIO0XRaYWBIyQ5nmPeJNagOybMfunvIT9huhO2B3iuPZIjedwSbXBDMztV9eeqhk7NXvMLoAC0vvhJHFl4Yoou%25KXcPdHS9Y3BUO30pQGC7sYXOSa2CpLQFj%25slZyrMnOIXYuiGEIHmdjJWHkIVFHGO6AusfgU7mlD9Uwmu1R7Gq3A89RpC0vQFju1dWS2aOI');
+        }
+
+        .image-4 {
+            left: 4.37%;
+            right: 72.82%;
+            top: 1271px;
+            background-image: url('https://prod.cosy.bmw.cloud/bmwweb/cosySec?COSY-EU-100-7331c9Nv2Z7d5yKlHS9amvhz25GaRhj5sgXAOHCrmg0VoWNekx%25AkbH8cLV04MOhFURMetagd14fXw1j6UmmlDWLfV91KVZ0pEuTQLTKs8VNP05Pv4bvbH84lNHCY4sNpqIzL5aUqTJIsIeiL3uBrBM0JdSeZe37uzVMRrdySkNh56HqVA0ogY%25FNF4HvVUx0Kc%252Nud4Wxfj0SCcP81D4YnxbUEqcuX89GsLxSHUiprJ8z9Gw6ZuUIPptYRSGKv67m5VpDhYCygN6qumlTv0YjyyX324mD%25TQdjcyqj3azDxTLtdnkq83K4zOALUdnqkIFJGzOOABKupkCAFeWS6xybKMPVY8%25VWhbNmUfhPo90yG1WbHi4TpWI9%25wc3lmeiftxdXbiw178zQRWtECUkaQS7slGAnMjCrXpF2%25%25lZQ6KjNgXRaYWDyVQ53NxtJix2SPuFABNWi5bfFSrP6ninKM4eC9iwWNRduIwQ081ZmQGwg6QuiVpRBnHJA0KE3Jz0ROhAusxpL3hSF2%25P61RO8m5fbiw');
+        }
+
+        .image-5 {
+            left: 38.56%;
+            right: 38.63%;
+            top: 1271px;
+            background-image: url('https://prod.cosy.bmw.cloud/bmwweb/cosySec?COSY-EU-100-7331c9Nv2Z7d5yKlHS9amvhz25GaRhj5sgXAOHCrmg0VoWNekx%25AkbH8cLV04MOhFUcmjQagd14fXw1j6UmmlDWLfV91KVZ0pEuTQLTKs8VNP05PRBZxbH84lNHCHvHnR0Kc%252%25Dd4Wxfjv6KcP81D2pLxbUEqjPF89GsLDbjUiprJqYDGw6ZuLmMptYRSF3y67m5VKJXYCygNWU9mlTv0PGdyX324mplTQdjcyQt3azDxTa6dnkq83pgzOALUdwnkIFJGzEfABKupksaFeWS6AHvKMPVYFXnWhbNmKQWPo90yGoBbHi4TpH19%25wc36XHiftxdYrxw178zmZptECUkyRE7slGAT5tCrXpF3tulZQ6Kd7%25XRaYWBA1Q5nmPeisagOybM%255nvIT9hqlO2B3ioLxIjedwHJUBDMzt%25pgeqhk7f6YMLoAC1fYhJHFlE5xou%25KXsgJHSfWQr8r%25V1Pa8lqfNEbnUX110s9OGeuE4riIpuuscZwB6krrxRteTI2Z8XkWfTHWpdM3IO2keH8hSId4MwV%258BDFjEoH%25ekxQ3v%25ZAPVc7Z9%25UwZ3Hzix25JTOABNXTaAxgqO30WiyXqdIpuMwVxgP78ShH%25');
+        }
+
+        .image-6 {
+            left: 71.64%;
+            right: 5.55%;
+            top: 1271px;
+            background-image: url('https://prod.cosy.bmw.cloud/bmwweb/cosySec?COSY-EU-100-7331c9Nv2Z7d5yKlHS9amvhz25GaRhj5sgXAOHCrmg0VoWNekx%25AkbH8cLV04MOhFUNr5tagd14fXw1j6UmmlDWLfV91KVZ0pEuTQLTKs8VNP05PRBY1bH84lNHCY4sNpqIzL5aUqTJIsINOL3uBrB1tJdSeZeECuzVMRMD9SkNh5hqTVA0ogoLkNF4HvHJB0Kc%252%25K84Wxfjf6%25cP81D1JSxbUEqEuX89GsLsSUUiprJrVsGw6ZuZW4ptYRSRPO67m5V5b9YCygNgpHmlTv0vsnyX324NAMTQdjc0Fh3azDx40Qdnkq8c4azOALUxyCkIFJG8TlABKupUBQFeWS6GwNKMPVYpt0WhbNm6wTPo90yYhBbHi4TmoY9%25wc3y7DiftxdIOcw178zi1WtECUkwo77slGAtqjCrXpF7gNlZQ6KCjNXRaYWzBEQ5nmPkeRagOybAKsnvIT9FvZO2B3iKHRIjedwW%252BDMztP50eqhk7ffyMLoAC11whJHFlEECou%25KXs7IHSfWQrCq%25V1PaZlmfNEbnRXq10s9O50BE4riIgvRscZwBv2IrxRte2jBZ857MjH0RUgChD%25W5Gvloq4jgp2XHLczv6jQ%25Jbr2YDafu9Tjmqn1Si3DyLOEVwnqTJIsNbpL3uBrK16JdSeZWE2uzVMRPsSSkNh5brVVA0og9LcNF4HviF00Kc%252wKa4WxfjtzzcP81D7kkxbUEqCBP89GsLGmXUiprJp4kGw6Zu63tptYRSYdG67m5Vm4xYCygNycmmlTv0TxHyX3243wzTQdjcdth3azDxz70dnkq8krYzOALUAZ8kIFJGFRgABKupK5fFeWS6hi3KMPVYoGQWhbNmHk2Po90y%25ChbHi4TflH9%25UjJF5kJEv3gmYCjTk%25dImvh30BxayXqlWzkATjHGg7A9DuBoc9VAf09gk2NHCwn5YDyeU5pDHtQYgMJNRUQvmEO30BHtuc%25IdkA');
+        }
+
+        /* Títulos de las imágenes */
+        .image-title {
+            position: absolute;
+            font-size: 20px;
+            font-weight: 600;
+            color: white;
+            line-height: 1.2;
+            width: 516px;
+        }
+
+        .title-1 {
+            left: 63px;
+            top: 1139px;
+        }
+
+        .title-2 {
+            left: 556px;
+            top: 1139px;
+        }
+
+        .title-3 {
+            left: 1033px;
+            top: 1139px;
+        }
+
+        .title-4 {
+            left: 63px;
+            top: 1531px;
+        }
+
+        .title-5 {
+            left: 556px;
+            top: 1531px;
+        }
+
+        .title-6 {
+            left: 1033px;
+            top: 1531px;
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            top: 1740px;
+            left: 0;
+            right: 0;
+            height: 264px;
+            background-color: black;
+        }
+
+        .footer-title {
+            position: absolute;
+            left: 80px;
+            top: 70px;
+            transform: translateY(-50%);
+            font-size: 24px;
+            font-weight: 400;
+            color: white;
+        }
+
+        .footer-columns {
+            position: absolute;
+            top: 48px;
+            right: 80px;
+            display: flex;
+            gap: 80px;
+        }
+
+        .footer-column {
+            width: 187px;
+        }
+
+        .footer-column h4 {
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-column li {
+            margin-bottom: 24px;
+            color: #454545;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .social-icons {
+            position: absolute;
+            left: 80px;
+            top: 176px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            background-color: #712626;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+
+        /* Líneas decorativas */
+        .decorative-line {
+            position: absolute;
+            top: 1821px;
+            height: 1px;
+            width: 188px;
+            background-color: #6A1414;
+        }
+
+        .line-1 {
+            left: 738px;
+        }
+
+        .line-2 {
+            left: 957px;
+        }
+
+        .line-3 {
+            left: 1174px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1500px) {
+            .container {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header con imagen BMW i8 -->
+        <div class="header-with-image">
+            <div class="dimmer"></div>
+            <div class="page-title">
+                <h1 class="main-title">The Luxury Garage</h1>
+                <p class="subtitle">Innovación, diseño, excelencia</p>
+            </div>
+        </div>
+
+        <!-- Navegación superior -->
+        <div class="navigation">
+            <div class="logo">
+  <img src="./Captura de pantalla 2025-09-21 212847.png" alt="Logo The Luxury Garage" style="height: 80px;">
+</div>
+
+        <div class="nav-items">
+  <a href="quienesomos.html" class="nav-link">¿Quiénes somos?</a>
+  <a href="contacto.html" class="nav-link">Contacto</a>
+  <a href="testdrive.html" class="nav-link">Agendar test drive</a>
+  <a href="registrarse.html" class="nav-link">Registrarse</a>
+</div>
+
+        <!-- Galería de imágenes -->
+        <!-- BMW X6 -->
+        <a href="x6.html" class="gallery-link">
+  <div class="gallery-image image-1">
+    <div class="image-overlay"></div>
+    <div class="image-content">
+      <div class="image-text">Ver detalles</div>
+    </div>
+  </div>
+</a>
+        <div class="image-title title-1">BMW X6</div>
+
+        <!-- BMW M240i xDRIVE COUPÉ -->
+                <a href="m240i.html" class="gallery-link">
+  <div class="gallery-image image-2">
+    <div class="image-overlay"></div>
+    <div class="image-content">
+      <div class="image-text">Ver detalles</div>
+    </div>
+  </div>
+</a>
+        <div class="image-title title-2">BMW M240i xDrive Coupé</div>
+
+        <!-- BMW M3 COMPETITION -->
+        <a href="m3.html" class="gallery-link">
+  <div class="gallery-image image-3">
+    <div class="image-overlay"></div>
+    <div class="image-content">
+      <div class="image-text">Ver detalles</div>
+    </div>
+  </div>
+</a>
+        <div class="image-title title-3">BMW M3 Competition</div>
+
+        <!-- BMW X6 M -->
+        <a href="x6m.html" class="gallery-link">
+  <div class="gallery-image image-4">
+    <div class="image-overlay"></div>
+    <div class="image-content">
+      <div class="image-text">Ver detalles</div>
+    </div>
+  </div>
+</a>
+        <div class="image-title title-4">BMW X6 M</div>
+
+        <!--BMW Serie 4 Coupé -->
+        <a href="serie4.html" class="gallery-link">
+  <div class="gallery-image image-5">
+    <div class="image-overlay"></div>
+    <div class="image-content">
+      <div class="image-text">Ver detalles</div>
+    </div>
+  </div>
+</a>
+        <div class="image-title title-5">BMW Serie 4 Coupé </div>
+
+        <!-- BMW Z4 Roadster -->
+        <a href="z4.html" class="gallery-link">
+  <div class="gallery-image image-6">
+    <div class="image-overlay"></div>
+    <div class="image-content">
+      <div class="image-text">Ver detalles</div>
+    </div>
+  </div>
+</a>
+        <div class="image-title title-6">BMW Z4 Roadster</div>
+
+        <!-- Líneas decorativas -->
+        <div class="decorative-line line-1"></div>
+        <div class="decorative-line line-2"></div>
+        <div class="decorative-line line-3"></div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-title">The Luxury Garage</div>
+            
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <h4>Sobre nosotros</h4>
+                    <ul>
+                        <li>Contactanos</li>
+                        <li>Visitanos</li>
+                        <li>Trabajá con nosotros</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Postventa</h4>
+                    <ul>
+                        <li>Repuestos</li>
+                        <li>Accesorios</li>
+                        <li>Recall Airbag</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Institucional</h4>
+                    <ul>
+                        <li>Política de privacidad</li>
+                        <li>Noticias</li>
+                        <li>Trayectoria</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="social-icons">
+                <div class="social-icon">FB</div>
+                <div class="social-icon">IG</div>
+                <div class="social-icon">TW</div>
+                <div class="social-icon">LI</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Funcionalidad de click en las imágenes
+        document.querySelectorAll('.gallery-image').forEach((image, index) => {
+            image.addEventListener('click', function() {
+                const carPages = [
+                    'BMW X6.html', 
+                    'BMW iX2 2025', 
+                    'BMW X2 2025', 
+                    'BMW X6 M', 
+                    'BMW M240i xDrive Coupé', 
+                    'BMW Z4 Roadster'
+                ];
+                window.location.href = carPages[index];});
+            });
+        ;
+    </script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Agendar Test Drive - The Luxury Garage</title>
+  <style>
+    body {
+      background-color: black;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      margin: 0;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #000;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+      z-index: 1000;
+    }
+
+    header .left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    header .nombre {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #b1893a;
+      letter-spacing: 1px;
+    }
+
+    header a {
+      background: #b1893a;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      transition: background 0.3s ease;
+      margin-right: 40px; 
+    }
+
+    header a:hover {
+      background: #cf9f4a;
+    }
+
+    /* ===== FORMULARIO ===== */
+    main {
+      margin-top: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    form {
+      background: #111;
+      padding: 30px;
+      border-radius: 15px;
+      border: 1px solid #b1893a;
+      width: 450px;
+    }
+
+    form h2 {
+      color: #b1893a;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form label {
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+      color: #ddd;
+    }
+
+    form input,
+    form select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    form button {
+      margin-top: 15px;
+      width: 100%;
+      padding: 12px;
+      background: #b1893a;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    form button:hover {
+      background: #cf9f4a;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="left">
+      <img src="Captura de pantalla 2025-09-21 212847.png" alt="Logo The Luxury Garage">
+      <div class="nombre">The Luxury Garage</div>
+    </div>
+    <a href="concesionario.html">Volver al inicio</a>
+  </header>
+
+  <!-- FORMULARIO -->
+  <main>
+    <form id="testDriveForm">
+      <h2>Agendar Test Drive</h2>
+
+      <label>Nombre</label>
+      <input type="text" required>
+
+      <label>Email</label>
+      <input type="email" required>
+
+      <label>Teléfono</label>
+      <input type="tel" required>
+
+      <label>Vehículo</label>
+      <select required>
+        <option value="">Selecciona un modelo</option>
+        <option value="BMW Serie 3">BMW X6</option>
+        <option value="BMW X5">BMW M240i xDrive Coupé</option>
+        <option value="BMW i4">BMW M3 Competition</option>
+        <option value="BMW i4">BMW X6 M</option>
+        <option value="BMW i4">BMW Serie 4 Coupé</option>
+        <option value="BMW i4">BMW Z4 Roadster</option>
+      </select>
+
+      <label>Fecha</label>
+      <input type="date" required>
+
+      <label>Hora</label>
+      <input type="time" required>
+
+      <button type="submit">Agendar</button>
+    </form>
+  </main>
+
+  <script>
+    document.getElementById("testDriveForm").addEventListener("submit", function(e) {
+      e.preventDefault(); // evita que recargue la página
+      alert("✅ ¡Tu test drive ha sido agendado con éxito!");
+      this.reset(); // limpia el formulario
+    });
+  </script>
+
+</body>
+</html>

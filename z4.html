@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle del Auto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #000;
+      color: white;
+      margin: 0;
+    }
+
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      background-color: rgba(0,0,0,0.8);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #333;
+      padding: 16px 32px;
+      z-index: 10;
+    }
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  background-color:#450b0a; /* fondo rojo */
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.button:hover {
+  background-color:#5c2322;/* rojo más oscuro al pasar el mouse */
+}
+
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    @media(min-width: 1024px) {
+      .container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .car-image {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+
+    .car-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media(min-width: 768px) {
+      .specs-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .spec-card {
+      background-color: #111;
+      padding: 16px;
+      border-radius: 8px;
+    }
+
+    .spec-card .label {
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    .spec-card .value {
+      color: white;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    .price-card {
+      padding: 24px;
+      border-radius: 12px;
+      background:  #450b0a;
+      margin-top: 16px;
+    }
+
+    .price-card .label {
+      color: #f4cccc;
+      font-size: 0.9rem;
+    }
+
+    .price-card .value {
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      margin-top: 4px;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 16px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .action-buttons .btn-primary {
+      flex: 1;
+      background-color: #450b0a;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+
+    .action-buttons .btn-primary:hover {
+      background-color: #5c2322;
+    }
+
+    .action-buttons .btn-outline {
+      flex: 1;
+      border: 1px solid #666;
+      color: white;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      background: transparent;
+      transition: background 0.3s ease;
+    }
+
+    .action-buttons .btn-outline:hover {
+      background-color: #333;
+    }
+
+              .color-selector { display: flex; gap: 12px; margin-top: 16px; }
+  .color-circle { width: 32px; height: 32px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: border 0.3s; }
+  .color-circle:hover { border: 2px solid white; }
+  .color-circle.selected { border: 2px solid yellow; }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="sticky-header">
+    <a href="concesionario.html" class="button">&#8592; Volver al catálogo</a>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="container">
+    
+    <!-- Imagen del auto -->
+    <div class="car-image">
+      <img src="z4.jpeg" alt="BMW Z4">
+    </div>
+
+    <!-- Información del auto -->
+    <div>
+      <h1 style="font-size: 2.5rem; margin-bottom: 16px;">BMW Z4 Roadster</h1>
+      <p style="color: #ccc; line-height: 1.6; margin-bottom: 24px;">
+        El roadster perfecto para sentir la carretera. Ligero, potente y con un diseño icónico.
+      </p>
+
+           <!-- Selección de color -->
+      <div class="color-selector">
+        <span class="color-circle selected" data-img="C:\Users\mvict\OneDrive\Escritorio\FACULTAD 2025\Taller de desarrollo web\Concesionario\z4.jpeg" style="background-color: rgb(97, 43, 90);  border: 1px solid #ccc;"></span>
+        <span class="color-circle" data-img="C:\Users\mvict\OneDrive\Escritorio\FACULTAD 2025\Taller de desarrollo web\Concesionario\z4bordo.jpeg" style="background-color: rgb(88, 14, 41); border: 1px solid #ccc;"></span>
+        <span class="color-circle" data-img= "C:\Users\mvict\OneDrive\Escritorio\FACULTAD 2025\Taller de desarrollo web\Concesionario\z4verde.jpeg" style="background-color: rgb(43, 90, 54); border: 1px solid #ccc;"></span>
+      </div>
+
+      <!-- Especificaciones -->
+      <h2 style="font-size: 1.5rem; margin-bottom: 16px;">Especificaciones</h2>
+      <div class="specs-grid">
+        <div class="spec-card">
+          <div class="label">Motor</div>
+          <div class="value">2.0L I4 Turbo</div>
+        </div>
+        <div class="spec-card">
+          <div class="label">Potencia</div>
+          <div class="value">258 hp</div>
+        </div>
+        <div class="spec-card">
+          <div class="label">0-100 km/h</div>
+          <div class="value">5.4 s</div>
+        </div>
+        <div class="spec-card">
+          <div class="label">Velocidad máxima</div>
+          <div class="value">250 km/h</div>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <div class="label">Precio desde</div>
+        <div class="value">USD 111.900</div>
+      </div>
+
+      <!-- Botones -->
+      <div class="action-buttons">
+        <button class="btn-primary" onclick="window.location.href='cotizacion.html'">
+        Solicitar cotización
+        </button>
+
+        <button class="btn-outline" onclick="window.location.href='testdrive.html'">
+        Agendar test drive
+        </button>
+      </div>
+
+  </div>
+
+  <script>
+    const colorCircles = document.querySelectorAll('.color-circle');
+    const carImage = document.querySelector('.car-image img');
+      colorCircles.forEach(circle => {
+      circle.addEventListener('click', () => {
+        carImage.src = circle.getAttribute('data-img');
+        colorCircles.forEach(c => c.classList.remove('selected'));
+        circle.classList.add('selected');
+      });
+    });
+  </script>
+
+</body>
+</html>
