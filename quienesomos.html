@@ -33,15 +33,15 @@ header {
   z-index: 1000;
 }
 
-/* BOTÓN: lo dejamos en el flujo normal (a la izquierda) */
+/* BOTÓN a la izquierda */
 header .btn-back {
-  position: relative;     /* importante para que esté por encima si se superponen */
+  position: relative;     /* para que esté por encima si se superponen */
   z-index: 1100;
 }
 
-/* LOGO: lo centramos absolutamente */
+/* LOGO lo centramos  */
 header .logo {
-  position: absolute;             /* lo saca del flujo y lo centra en el header */
+  position: absolute;             /* lo centra en el header */
   left: 88%;
   transform: translateX(-50%);
   font-size: 1.2rem;
@@ -49,8 +49,8 @@ header .logo {
   color: #fff;
   letter-spacing: 1.5px;
 
-  /* Evitar que el texto se salga en pantallas chicas */
-  max-width: calc(100% - 160px);  /* deja espacio para el botón izquierdo (y posible botón derecho) */
+  /* para que el texto no se salga de la pantalla */
+  max-width: calc(100% - 160px);  /* deja espacio para el botón izquierdo */
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
@@ -59,7 +59,7 @@ header .logo {
   z-index: 1050;
 }
 
-/* Ajustes responsive */
+
 @media (max-width: 480px) {
   header .logo {
     font-size: 1rem;
@@ -191,7 +191,7 @@ header .logo {
         </p>
       </div>
       <div class="imagen">
-        <img src="./Captura de pantalla 2025-09-21 212847.png" alt="Concesionario BMW">
+        <img src="imagenes/logo.png" alt="Concesionario BMW">
       </div>
     </section>
   </main>
