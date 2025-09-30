@@ -193,10 +193,17 @@ header{
             left: 4.37%;
             right: 72.82%;
             top: 878px;
-            background-image: url('https://prod.cosy.bmw.cloud/bmwweb/cosySec?COSY-EU-100-7331c9Nv2Z7d5yKlHS9amvhz25GaRhj5sgXAOHCrmg0VoWNekx%25AkbH8cLV04MOhFUbmKTagd14fXw1j6UmmlDWLfV91KVZ0pEuTQLTKs8VNP05PuDiDbH84lNHCHvHfX0Kc%252%25xv4WxfjvCacP81D2WAxbUEqjp289GsLD6uUiprJqYhGw6ZuAcmptYRSFxO67m5VK7JYCygNWOomlTv0PjdyX324bDfTQdjcyF23azDxT0Qdnkq83mCzOALUdy%25kIFJGzTOABKupkiZFeWS6AyEKMPVYFTHWhbNmK1CPo90yWnxbHi4TPG29%25wc3bpmiftxd9Uww178ziGntECUkwQ37slGAtakCrXpF7sGlZQ6KdbnXRaYWz2RQ5nmPklcagOybMxrnvIT9hLCO2B3iohzIjedwHNxBDMzt%25r0eqhk7fZDMLoAC0wvhJHFl4toou%25KXcjjHSfWQxy0%25V1Pa89kfNEbnUIj10tTkh6ekxmOYQXRTne0IqQmSOP%25SUagd5HBeMnTN7YZM13ALV91KM4P1YeyWNRsj6X3aJt6C3NrvXYukWptvmQxDOPLNrA90qIeM');
+            background-image: url("./imagenes/bmw\ x6.jpeg");
         }
 
-                .image-3 {
+        .image-2 { 
+            left: 38.56%; 
+            right: 38.63%; 
+            top: 878px; 
+            background-image: url("./imagenes/m240.jpeg");
+        }
+
+        .image-3 {
             left: 71.64%;
             right: 5.55%;
             top: 878px;
@@ -205,6 +212,7 @@ header{
             background-position: center 60px; /*la moví mas abajo*/
         }
         
+
         .image-4 {
             left: 4.37%;
             right: 72.82%;
@@ -511,16 +519,24 @@ header{
         document.querySelectorAll('.gallery-image').forEach((image, index) => {
             image.addEventListener('click', function() {
                 const carPages = [
-                    'BMW X6.html', 
-                    'BMW iX2 2025', 
-                    'BMW X2 2025', 
-                    'BMW X6 M', 
-                    'BMW M240i xDrive Coupé', 
-                    'BMW Z4 Roadster'
+                    'x6.html', 
+                    'm240i.html', 
+                    'm3.html', 
+                    'x6m.html', 
+                    'serie4.html', 
+                    'z4.html'
                 ];
                 window.location.href = carPages[index];});
             });
         ;
-    </script>
+
+  document.querySelectorAll('.gallery-image').forEach((image, index) => {
+    image.addEventListener('click', function() {
+      // comprueba que exista la página antes de redirigir
+      window.location.href = carPages[index];
+    });
+  });
+</script>
+
 </body>
 </html>
