@@ -4,20 +4,12 @@
   <meta charset="UTF-8">
   <title>Registro BMW</title>
 
-<header style="display:flex; align-items:center; justify-content:space-between; background:black; padding:10px 20px;">
-  <div class="left" style="display:flex; align-items:center; gap:15px;">
-    <img src="./imagenes/logo.png" alt="Logo The Luxury Garage" style="height: 240px;"> <!-- logo más chico -->
-  </div>
-  <a href="./concesionario.html" style= "position:absolute; top:15px; left:20px; 
-            padding:8px 15px; background:#cf9f4a; color:white; 
-            text-decoration:none; border-radius:6px; font-size:14px; font-weight:bold;">
-    Volver al inicio
-  </a>
-</header>
-  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
   <style>
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Poppins', sans-serif;
       background-color: #000;
       color: white;
       margin: 0;
@@ -27,6 +19,43 @@
       min-height: 100vh;
     }
 
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 65px;
+      background: black;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      box-sizing: border-box;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+      z-index: 1000;
+    }
+
+    header .left img {
+      height: 45px;
+      display: block;
+    }
+
+    header a {
+      background: #cf9f4a;
+      padding: 8px 15px;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    header a:hover {
+      background: #b77f34;
+    }
+
     .form-container {
       background: #111;
       padding: 30px;
@@ -34,6 +63,7 @@
       box-shadow: 0 8px 20px #cf9f4a;
       max-width: 400px;
       width: 100%;
+      margin-top: 100px; /* para que no se esconda bajo el header */
     }
 
     fieldset {
@@ -80,28 +110,25 @@
     }
 
     .radio-group {
-  display: flex;
-  gap: 16px;            /* espacio entre las opciones */
-  align-items: center;  /* alinea verticalmente el input y el texto */
-  margin-top: 6px;
-}
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-top: 6px;
+    }
 
-/* estilo de cada etiqueta que contiene el radio + texto */
-.radio-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  color: #ddd;          /* mismo color que los otros labels */
-  font-size: 0.95rem;
-}
+    .radio-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      color: #ddd;
+      font-size: 0.95rem;
+    }
 
-/* hacer el input un poco más grande y consistente */
-.radio-item input[type="radio"] {
-  width: 16px;
-  height: 16px;
-
-}
+    .radio-item input[type="radio"] {
+      width: 16px;
+      height: 16px;
+    }
 
     button {
       width: 100%;
@@ -109,64 +136,72 @@
       border: none;
       border-radius: 8px;
       font-weight: bold;
-      background: #cf9f4a; 
+      background: #cf9f4a;
       color: white;
       cursor: pointer;
       transition: background 0.3s ease;
     }
 
     button:hover {
-      background: #cf9f4a;
+      background: #b77f34;
     }
   </style>
 </head>
 <body>
 
-  <div class="form-container">
-
-<form onsubmit="registrarse(event)">
-  <fieldset>
-    <legend>Registro en The Luxury Garage</legend>
-    <label for="apellido">Apellido:</label>
-    <input type="text" id="apellido" placeholder="Ingrese su apellido">
-
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" placeholder="Ingrese su nombre">
-
-    <label>Sexo:</label>
-    <div class="radio-group">
-      <label class="radio-item">
-        <input type="radio" id="femenino" name="sexo" value="Femenino"> Femenino
-      </label>
-
-      <label class="radio-item">
-        <input type="radio" id="masculino" name="sexo" value="Masculino"> Masculino
-      </label>
+  <!-- HEADER -->
+  <header>
+    <div class="left">
+      <img src="./imagenes/logo.png" alt="Logo The Luxury Garage">
     </div>
+    <a href="./concesionario.html">Volver al inicio</a>
+  </header>
 
-    <label for="fecha_nacimiento">Fecha de nacimiento:</label>
-    <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+  <!-- FORMULARIO -->
+  <div class="form-container">
+    <form onsubmit="registrarse(event)">
+      <fieldset>
+        <legend>Registro en The Luxury Garage</legend>
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" placeholder="Ingrese su apellido">
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" placeholder="Ingrese su mail">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" placeholder="Ingrese su nombre">
 
-    <label for="usuario">Usuario:</label>
-    <input type="text" id="usuario" placeholder="Ingrese su usuario">
+        <label>Sexo:</label>
+        <div class="radio-group">
+          <label class="radio-item">
+            <input type="radio" id="femenino" name="sexo" value="Femenino"> Femenino
+          </label>
+          <label class="radio-item">
+            <input type="radio" id="masculino" name="sexo" value="Masculino"> Masculino
+          </label>
+        </div>
 
-    <label for="password">Contraseña:</label>
-    <input type="password" id="password" placeholder="Ingrese su contraseña">
-  </fieldset>
+        <label for="fecha_nacimiento">Fecha de nacimiento:</label>
+        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
 
-  <button type="submit">ENVIAR</button>
-</form>
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Ingrese su mail">
 
-<script>
-  function registrarse(e) {
-    e.preventDefault(); // evita que recargue
-    alert("✅ ¡Te has registrado con éxito!");
-    e.target.reset(); // limpia el formulario
-  }
-</script>
+        <label for="usuario">Usuario:</label>
+        <input type="text" id="usuario" placeholder="Ingrese su usuario">
+
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" placeholder="Ingrese su contraseña">
+      </fieldset>
+
+      <button type="submit">ENVIAR</button>
+    </form>
+  </div>
+
+  <script>
+    function registrarse(e) {
+      e.preventDefault(); // evita que recargue
+      alert("✅ ¡Te has registrado con éxito!");
+      e.target.reset(); // limpia el formulario
+    }
+  </script>
 
 </body>
 </html>

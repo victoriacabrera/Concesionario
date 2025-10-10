@@ -11,7 +11,6 @@
       background: black;
       color: white;
     }
-
     header {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -31,7 +30,6 @@
       padding: 0.5rem 1rem;
       border-radius: 8px;
     }
-
     main {
       margin-top: 100px;
       display: grid;
@@ -39,7 +37,6 @@
       gap: 2rem;
       padding: 2rem;
     }
-
     .preview {
       background: #111;
       border: 1px solid #333;
@@ -54,21 +51,18 @@
       border-radius: 8px;
       transition: opacity 0.3s ease;
     }
-
     h2 {
       color: rgb(177,137,58);
       margin: 1rem 0 0.5rem;
     }
-
     .options { margin: 1rem 0; }
-    .options select, .options input {
+    .options select {
       width: 100%;
       padding: 0.5rem;
       margin: 0.5rem 0;
       border-radius: 6px;
       border: none;
     }
-
     .summary {
       background: #111;
       border: 1px solid #333;
@@ -80,7 +74,6 @@
     .summary h3 { margin-bottom: 1rem; }
     .summary div { margin: 0.5rem 0; }
     .price { font-size: 1.5rem; font-weight: bold; }
-
     button {
       width: 100%;
       padding: 0.75rem;
@@ -95,6 +88,30 @@
     }
     button:hover { background: white; color: black; }
 
+    /* Opciones de llantas */
+    .llantas-options {
+      display: flex;
+      gap: 10px;
+      margin: 10px 0;
+      justify-content: space-between;
+    }
+    .llantas-options img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .llantas-options img:hover {
+      transform: scale(1.1);
+    }
+    .llantas-options img.selected {
+      border-color: rgb(177,137,58);
+      box-shadow: 0 0 10px rgb(177,137,58);
+    }
+
     @media (max-width: 768px) {
       main { grid-template-columns: 1fr; }
     }
@@ -102,14 +119,14 @@
 </head>
 <body>
   <header>
-    <img src="./imagenes/Captura de pantalla 2025-09-21 212847.png" alt="Logo BMW">
-    <a href="concesionario.html">Volver al inicio</a>
+    <img src="./imagenes/logo.png" alt="Logo BMW">
+    <a href="./concesionario.html">Volver al inicio</a>
   </header>
 
   <main>
     <!-- Vista previa -->
     <div class="preview">
-      <img id="carImage" src="./imagenes/x6m.png" alt="BMW preview">
+      <img id="carImage" src= alt="BMW preview">
       <h2 id="previewTitle">Selecciona tu BMW</h2>
     </div>
 
@@ -130,21 +147,15 @@
 
         <label>Color</label>
         <select id="color">
-          <option value="">-- Selecciona --</option>
-          <option value="blanco">Blanco</option>
-          <option value="negro">Negro</option>
-          <option value="azul">Azul</option>
-          <option value="rojo">Rojo</option>
-          <option value="gris">Gris</option>
+          <option value="">-- Selecciona un color --</option>
         </select>
 
         <label>Llantas</label>
-        <select id="llantas">
-          <option value="">-- Selecciona --</option>
-          <option value="standard">Standard</option>
-          <option value="sport">Sport</option>
-          <option value="luxury">Luxury</option>
-        </select>
+        <div class="llantas-options">
+          <img src="./imagenes/llanta_standard.png" alt="Standard" data-value="standard">
+          <img src="./imagenes/llanta_sport.png" alt="Sport" data-value="sport">
+          <img src="./imagenes/llanta_luxury.png" alt="Luxury" data-value="luxury">
+        </div>
       </div>
 
       <h3>Resumen</h3>
@@ -160,7 +171,6 @@
   <script>
     const modeloSel = document.getElementById('modelo');
     const colorSel = document.getElementById('color');
-    const llantasSel = document.getElementById('llantas');
     const carImage = document.getElementById('carImage');
     const previewTitle = document.getElementById('previewTitle');
 
@@ -169,23 +179,46 @@
     const resLlantas = document.getElementById('resLlantas');
     const totalPrice = document.getElementById('totalPrice');
 
+    let llantasSeleccionadas = "";
+
     const preciosModelos = {
       x6: 68500,
-      ix2: 55000,
-      x2: 48000,
-      x6m: 95000,
+      m3: 95000,
+      "4sc": 72000,
+      x6m: 110000,
       m240i: 62000,
       z4: 70000
     };
     const preciosColores = { blanco: 0, negro: 500, azul: 800, rojo: 1200, gris: 600 };
     const preciosLlantas = { standard: 0, sport: 2500, luxury: 4000 };
 
+    // Colores disponibles según modelo
+    const coloresPorModelo = {
+      m3: ["Verde Turquesa", "Rosa Elegante", "Gris Plata"],
+      m240i: ["Rojo Deportivo", "Oro Sahara", "Azul Zafiro", "Violeta Imperial"],
+      "4sc": ["Brisa Celeste", "Orquídea", "Rojo Deportivo", "Verde Primavera"],
+      x6: ["Brisa Celeste", "Gris Titanio", "Plata Lunar", "Flamingo"],
+      x6m: ["Verde Selva", "Violeta Imperial", "Azul Real"],
+      z4: ["Verde Deportivo", "Violeta Galáctico", "Sangría"]
+    };
+
+    function updateColors() {
+      const modelo = modeloSel.value;
+      const colores = coloresPorModelo[modelo] || [];
+      colorSel.innerHTML = '<option value="">-- Selecciona un color --</option>';
+      colores.forEach(c => {
+        const opt = document.createElement("option");
+        opt.value = c.toLowerCase().replace(/\s+/g, "-").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        opt.textContent = c;
+        colorSel.appendChild(opt);
+      });
+    }
+
     function updateCar() {
       const modelo = modeloSel.value;
       const color = colorSel.value;
-      const llantas = llantasSel.value;
+      const llantas = llantasSeleccionadas;
 
-      // actualizar preview
       if (modelo && color) {
         carImage.style.opacity = 0;
         setTimeout(() => {
@@ -195,7 +228,6 @@
         previewTitle.textContent = `BMW ${modelo.toUpperCase()} (${color})`;
       }
 
-      // actualizar resumen
       resModelo.textContent = modelo || '-';
       resColor.textContent = color || '-';
       resLlantas.textContent = llantas || '-';
@@ -207,9 +239,21 @@
       totalPrice.textContent = '$' + precio.toLocaleString();
     }
 
-    modeloSel.addEventListener('change', updateCar);
+    modeloSel.addEventListener('change', () => {
+      updateColors();
+      updateCar();
+    });
     colorSel.addEventListener('change', updateCar);
-    llantasSel.addEventListener('change', updateCar);
+
+    // Manejo de selección de llantas
+    document.querySelectorAll('.llantas-options img').forEach(img => {
+      img.addEventListener('click', () => {
+        document.querySelectorAll('.llantas-options img').forEach(i => i.classList.remove('selected'));
+        img.classList.add('selected');
+        llantasSeleccionadas = img.dataset.value;
+        updateCar();
+      });
+    });
 
     function confirmar() {
       alert(`Configuración confirmada:\nModelo: ${resModelo.textContent}\nColor: ${resColor.textContent}\nLlantas: ${resLlantas.textContent}\nPrecio: ${totalPrice.textContent}`);
@@ -217,3 +261,4 @@
   </script>
 </body>
 </html>
+
