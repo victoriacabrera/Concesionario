@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle del Auto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="autos.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="sticky-header">
+    <a href="index.html" class="button">&#8592; Volver al catálogo</a>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="container">
+    
+    <!-- Imagen del auto -->
+    <div class="car-image">
+      <img src="imagenes/bmw_serie4_celeste.jpg" alt="BMW X6">
+    </div>
+
+    <!-- Información del auto -->
+    <div>
+      <h1 style="font-size: 2.5rem; margin-bottom: 16px;">BMW Serie 4 Coupé</h1>
+      <p style="color: #ccc; line-height: 1.6; margin-bottom: 24px;">
+        Elegancia y deportividad combinadas en un coupé que redefine el placer de conducir.
+      </p>
+      
+      <!-- Selección de color -->
+        <div class="color-selector">
+        <span class="color-circle selected" data-img= "./imagenes/bmw_serie4_celeste.jpg" style="background-color: rgb(60, 92, 125);  border: 1px solid #ccc;"></span>
+        <span class="color-circle selected" data-img= "./imagenes/bmw_serie4_violeta.jpg" style="background-color: rgb(80, 4, 75);  border: 1px solid #ccc;"></span>
+        <span class="color-circle" data-img= "./imagenes/bmw_serie4_rojo.png" style="background-color: rgb(185, 40, 40); border: 1px solid #ccc;"></span>
+        <span class="color-circle selected" data-img= "./imagenes/bmw_serie4_verde.jpg" style="background-color: rgb(43, 144, 36);  border: 1px solid #ccc;"></span>
+      </div>
+
+      <!-- Especificaciones -->
+      <h2 style="font-size: 1.5rem; margin-bottom: 16px;">Especificaciones</h2>
+      <div class="specs-grid">
+        <div class="spec-card">
+          <div class="label">Motor</div>
+          <div class="value">2.0L I4 Turbo</div>
+        </div>
+        <div class="spec-card">
+          <div class="label">Potencia</div>
+          <div class="value">255 hp</div>
+        </div>
+        <div class="spec-card">
+          <div class="label">0-100 km/h</div>
+          <div class="value">5.8 s</div>
+        </div>
+        <div class="spec-card">
+          <div class="label">Velocidad máxima</div>
+          <div class="value">250 km/h</div>
+        </div>
+      </div>
+
+      <div class="price-card">
+        <div class="label">Precio desde</div>
+        <div class="value">USD 89.900</div>
+      </div>
+
+      <!-- Botones -->
+      <div class="action-buttons">
+        <button class="btn-primary" onclick="window.location.href='cotizacion.html'">
+        Solicitar cotización
+        </button>
+
+        <button class="btn-outline" onclick="window.location.href='bmw_serie4.html'">
+        Ver modelo 3D
+        </button>
+      </div>
+
+  </div>
+
+    <script>
+    const colorCircles = document.querySelectorAll('.color-circle');
+    const carImage = document.querySelector('.car-image img');
+
+    colorCircles.forEach(circle => {
+      circle.addEventListener('click', () => {
+        carImage.src = circle.getAttribute('data-img');
+        colorCircles.forEach(c => c.classList.remove('selected'));
+        circle.classList.add('selected');
+      });
+    });
+  </script>
+
+</body>
+</html>
